@@ -37,4 +37,4 @@ export const queryAll = `{'about': *[_type == 'abouts']{
       tags
     },
    }
-   `
+   `;
