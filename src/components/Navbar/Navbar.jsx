@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
-import { urlFor } from "../../client";
 import "./Navbar.scss";
 import NavItems from "./NavItems";
 
 const menu = ["home", "about", "work", "skills", "contact"];
 
-const Navbar = ({ logo }) => {
+const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
     <nav className="app__navbar">
-      <div className="app__navbar-logo">
-        <img src={logo && urlFor(logo)} alt="logo" />
-      </div>
       <ul className="app__navbar-links">
         <NavItems menu={menu} />
       </ul>

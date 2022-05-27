@@ -16,7 +16,6 @@ export const queryAll = `{'about': *[_type == 'abouts']{
       email,
       phoneNumber,
       image,
-      logo
     },
     'skills': *[_type == 'skills']{
       name,

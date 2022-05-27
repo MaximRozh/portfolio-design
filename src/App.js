@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar logo={data?.personalInfo?.[0].logo} />
+      <Navbar />
       <Header avatar={data?.personalInfo?.[0].image} />
       <About abouts={data?.about || []} />
       <Work works={data?.works || []} />
