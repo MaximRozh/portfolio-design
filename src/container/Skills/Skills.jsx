@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import ReactTooltip from "react-tooltip";
 
@@ -7,6 +7,10 @@ import { urlFor } from "../../client";
 import "./Skills.scss";
 
 const Skills = ({ skills, experiences }) => {
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  });
+
   return (
     <>
       <h2 className="head-text">Skills & Experiences</h2>
@@ -42,25 +46,24 @@ const Skills = ({ skills, experiences }) => {
                     whileInView={{ opacity: [0, 1] }}
                     transition={{ duration: 0.5 }}
                     className="app__skills-exp-work"
-                    data-tip
-                    data-for={work.name}
                     key={work.name}
                   >
-                    <h4 className="bold-text">{work.name}</h4>
-                    <p className="p-text">{work.company}</p>
-                    <ReactTooltip
-                      id={work.name}
-                      effect="solid"
-                      arrowColor="#fff"
-                      className="skills-tooltip"
-                    >
-                      <span>{work.desc}</span>
-                    </ReactTooltip>
+                    <div data-tip={work.desc} data-for={"tooltip"}>
+                      <h4 className="bold-text">{work.name}</h4>
+                      <p className="p-text">{work.company}</p>
+                    </div>
                   </motion.div>
                 ))}
               </motion.div>
             </motion.div>
           ))}
+          <ReactTooltip
+            id={"tooltip"}
+            effect="solid"
+            arrowColor="#fff"
+            className="skills-tooltip"
+            getContent={(data) => <span>{data}</span>}
+          />
         </div>
       </div>
     </>
